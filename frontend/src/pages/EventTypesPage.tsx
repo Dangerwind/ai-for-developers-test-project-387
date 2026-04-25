@@ -28,10 +28,10 @@ function AdBanner() {
         >
           ×
         </button>
-        <div className="text-3xl mb-2">🐘</div>
+        <div className="text-3xl mb-2">🐒</div>
         <h3 className="font-bold text-lg mb-1">Зоопарк в Москве</h3>
         <p className="text-sm text-white/90 mb-3">
-          У нас появились летающие слоны! Спешите увидеть это уникальное зрелище! 
+          У нас появились летающие мартышки! Спешите увидеть это уникальное зрелище! 
           Билеты в продаже — успейте на экскурсию!
         </p>
         <span className="inline-block bg-white text-emerald-600 font-semibold text-sm px-4 py-1.5 rounded-full">
