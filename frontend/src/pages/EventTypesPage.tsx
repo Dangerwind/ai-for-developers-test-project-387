@@ -3,6 +3,45 @@ import { useNavigate } from 'react-router-dom'
 import { getEventTypes } from '../api'
 import type { EventType } from '../api'
 
+function AdBanner() {
+  const [visible, setVisible] = useState(false)
+
+  useEffect(() => {
+    const showDelay = setTimeout(() => setVisible(true), 2000)
+    const toggle = setInterval(() => setVisible(v => !v), 6000)
+    return () => {
+      clearTimeout(showDelay)
+      clearInterval(toggle)
+    }
+  }, [])
+
+  return (
+    <div
+      className={`fixed bottom-6 right-6 max-w-xs bg-gradient-to-r from-emerald-500 to-teal-600 text-white rounded-2xl shadow-2xl overflow-hidden transition-all duration-500 ${
+        visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4 pointer-events-none'
+      }`}
+    >
+      <div className="relative p-5">
+        <button
+          onClick={() => setVisible(false)}
+          className="absolute top-2 right-2 text-white/70 hover:text-white text-lg cursor-pointer"
+        >
+          ×
+        </button>
+        <div className="text-3xl mb-2">🐘</div>
+        <h3 className="font-bold text-lg mb-1">Зоопарк «Слоновий Рай»</h3>
+        <p className="text-sm text-white/90 mb-3">
+          У нас появились летающие слоны! Спешите увидеть это уникальное зрелище! 
+          Билеты в продаже — успейте на экскурсию!
+        </p>
+        <span className="inline-block bg-white text-emerald-600 font-semibold text-sm px-4 py-1.5 rounded-full">
+          Купить билеты →
+        </span>
+      </div>
+    </div>
+  )
+}
+
 function ClockIcon() {
   return (
     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -27,6 +66,9 @@ export default function EventTypesPage() {
 
   return (
     <>
+      {/* Ad Banner */}
+      <AdBanner />
+
       {/* Hero */}
       <div className="relative overflow-hidden bg-gradient-to-br from-orange-50 to-amber-50 border border-orange-200 rounded-2xl px-10 py-12 mb-10">
         <div className="absolute -top-16 -right-16 w-48 h-48 rounded-full bg-orange-100 opacity-50 pointer-events-none" />
